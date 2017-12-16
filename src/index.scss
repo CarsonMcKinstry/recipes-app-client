@@ -1,7 +1,14 @@
 @import "styles/variables";
 @import "styles/scale";
+@import "styles/fonts/fonts";
 
 body,
 html {
   padding: 0;
+  margin: 0;
+}
+
+.container {
+  max-width: $maxWidth;
+  margin: auto;
 }

@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 import "./Header.scss";
 
 const Header = () => (
-  <div className="container">
-    <header>
+  <header>
+    <nav>
       <ul className="header-left">
         <li>
           <Link to="/">Home</Link>
@@ -16,9 +16,12 @@ const Header = () => (
         <li>
           <Link to="/signin">Sign In</Link>
         </li>
+        <li>
+          <Link to="/signout">Sign Out</Link>
+        </li>
       </ul>
-    </header>
-  </div>
+    </nav>
+  </header>
 );
 
 // Header.propTypes = {};

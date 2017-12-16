@@ -1,8 +1,25 @@
+@import "../../styles/variables";
+
 header {
-  display: flex;
-  justify-content: space-between;
   height: 55px;
-  position: fixed;
   width: 100%;
   z-index: 1000;
+  nav {
+    max-width: $maxWidth;
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    li {
+      display: inline-block;
+    }
+  }
 }

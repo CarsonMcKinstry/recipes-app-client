@@ -10,8 +10,6 @@ body,
   font-family: $bodyFont;
   font-size: 1rem;
   line-height: 1.2777778rem;
-  max-width: $maxWidth;
-  margin: auto;
 }
 
 @for $i from 1 through 6 {
