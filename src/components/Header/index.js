@@ -6,7 +6,6 @@ import { connect } from "react-redux";
 import "./Header.scss";
 
 const Header = props => {
-  console.log(props);
   return (
     <header>
       <nav>

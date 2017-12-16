@@ -6,14 +6,15 @@ const APIBase = axios.create({
   baseURL: "/"
 });
 
-function authError(error) {
+export const authError = error => {
   return {
     type: AUTH_ERROR,
     error
   };
-}
+};
 
 export const registerUser = (user, history) => dispatch => {
+  console.log("got to register user actionCreator", user);
   APIBase.post("register", user)
     .then(res => {
       dispatch({

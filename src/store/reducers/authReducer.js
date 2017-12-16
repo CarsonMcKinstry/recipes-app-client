@@ -1,6 +1,9 @@
 import * as types from "../types";
 
-export default function(state = {}, action) {
+export default function(
+  state = { authenticated: false, error: null, user: undefined },
+  action
+) {
   switch (action.type) {
     case types.AUTH_SUCCESS:
       /**
@@ -16,7 +19,8 @@ export default function(state = {}, action) {
       return {
         ...state,
         authenticated: false,
-        user: undefined
+        user: undefined,
+        error: action.error
       };
     default:
       return state;

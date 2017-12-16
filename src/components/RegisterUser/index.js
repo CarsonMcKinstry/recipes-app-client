@@ -2,35 +2,47 @@ import React, { Component } from "react";
 import { PropTypes } from "prop-types";
 import * as actions from "../../store/actions/auth";
 import { connect } from "react-redux";
+import RegistrationForm from "./RegistrationForm";
 
 class RegisterUser extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      newUser: {
-        screenName: "Carson",
-        email: "carson.mckinstry@me.com",
-        password: "password",
-        passwordConfirm: "password"
-      }
-    };
-
     this.handleRegistration = this.handleRegistration.bind(this);
+    this.renderErrors = this.renderErrors.bind(this);
   }
 
-  handleRegistration = () => {
-    const { newUser } = this.state;
+  handleRegistration = newUser => {
     const { history, registerUser } = this.props;
-
     registerUser(newUser, history);
   };
 
+  renderErrors = () => {
+    const { errors } = this.props;
+    return errors && <p>{errors}</p>;
+  };
+
   render() {
-    return <button onClick={this.handleRegistration}>Click me</button>;
+    const { authError } = this.props;
+    console.log(this.props);
+    return (
+      <div>
+        {this.renderErrors()}
+        <RegistrationForm
+          handleRegistration={this.handleRegistration}
+          handleRegistrationErrors={authError}
+        />
+      </div>
+    );
   }
 }
 
 RegisterUser.propTypes = {};
 
-export default connect(undefined, actions)(RegisterUser);
+function mapStateToProps(state) {
+  return {
+    errors: state.auth.error
+  };
+}
+
+export default connect(mapStateToProps, () => actions)(RegisterUser);
