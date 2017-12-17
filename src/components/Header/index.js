@@ -5,7 +5,34 @@ import { connect } from "react-redux";
 
 import "./Header.scss";
 
+const renderHeaderRight = authenticated => {
+  if (!authenticated) {
+    return (
+      <ul className="header-right">
+        <li>
+          <Link to="/register">Register</Link>
+        </li>
+        <li>
+          <Link to="/signin">Sign In</Link>
+        </li>
+      </ul>
+    );
+  } else {
+    return (
+      <ul className="header-right">
+        <li>
+          <Link to="/account">Account</Link>
+        </li>
+        <li>
+          <Link to="/signout">Signout</Link>
+        </li>
+      </ul>
+    );
+  }
+};
+
 const Header = props => {
+  const { authenticated } = props.auth;
   return (
     <header>
       <nav>
@@ -14,14 +41,7 @@ const Header = props => {
             <Link to="/">Home</Link>
           </li>
         </ul>
-        <ul className="header-right">
-          <li>
-            <Link to="/register">Register</Link>
-          </li>
-          <li>
-            <Link to="/signin">Sign In</Link>
-          </li>
-        </ul>
+        {renderHeaderRight(authenticated)}
       </nav>
     </header>
   );
@@ -29,4 +49,8 @@ const Header = props => {
 
 // Header.propTypes = {};
 
-export default connect(state => state)(Header);
+export default connect(state => {
+  return {
+    auth: state.auth
+  };
+})(Header);

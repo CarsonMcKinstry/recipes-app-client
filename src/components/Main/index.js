@@ -2,25 +2,14 @@ import React, { Component } from "react";
 import { PropTypes } from "prop-types";
 import { Switch, Route } from "react-router-dom";
 import RegisterUser from "../RegisterUser/";
+import { connect } from "react-redux";
+import Home from "../Home/";
 
 class Main extends Component {
-  // componentDidMount() {
-  //   setTimeout() {
-
-  //   }
-  // }
-
   render() {
     return (
       <Switch>
-        <Route
-          exact
-          path="/"
-          render={props => {
-            console.log(props);
-            return <h1>Home Component goes here</h1>;
-          }}
-        />
+        <Route exact path="/" component={Home} />
         <Route path="/register" component={RegisterUser} />
       </Switch>
     );
@@ -29,4 +18,4 @@ class Main extends Component {
 
 Main.propTypes = {};
 
-export default Main;
+export default connect(state => state)(Main);
