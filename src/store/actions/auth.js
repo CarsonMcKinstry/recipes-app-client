@@ -1,10 +1,13 @@
 import axios from "axios";
-import { every, identity } from "lodash/fp";
-import { AUTH_ERROR, AUTH_SUCCESS } from "../types";
+import { AUTH_ERROR, AUTH_SUCCESS, SIGNOUT } from "../types";
 
 const APIBase = axios.create({
   baseURL: "/"
 });
+
+export const signout = () => dispatch => {
+  dispatch({ type: SIGNOUT });
+};
 
 export const authError = error => {
   return {

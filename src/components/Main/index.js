@@ -4,6 +4,7 @@ import { Switch, Route } from "react-router-dom";
 import RegisterUser from "../RegisterUser/";
 import { connect } from "react-redux";
 import Home from "../Home/";
+import SignOut from "../Auth/Signout";
 
 class Main extends Component {
   render() {
@@ -11,6 +12,7 @@ class Main extends Component {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/register" component={RegisterUser} />
+        <Route path="/signout" component={SignOut} />
       </Switch>
     );
   }

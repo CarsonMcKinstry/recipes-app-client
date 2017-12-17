@@ -5,6 +5,15 @@ export default function(
   action
 ) {
   switch (action.type) {
+    case types.SIGNOUT:
+      console.log("got to signout case");
+      localStorage.removeItem("token");
+      return {
+        ...state,
+        authenticated: false,
+        error: null,
+        user: undefined
+      };
     case types.AUTH_SUCCESS:
       /**
        * TODO: get the user from the token
