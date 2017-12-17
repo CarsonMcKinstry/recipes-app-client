@@ -24,7 +24,6 @@ class RegisterUser extends Component {
 
   render() {
     const { authError } = this.props;
-    console.log(this.props);
     return (
       <div>
         {this.renderErrors()}
@@ -45,4 +44,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, () => actions)(RegisterUser);
+export default connect(mapStateToProps, actions)(RegisterUser);

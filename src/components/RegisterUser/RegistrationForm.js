@@ -15,8 +15,6 @@ class RegistrationForm extends Component {
     };
     this.setFormProperties = this.setFormProperties.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleRegistrationErrors = props.handleRegistrationErrors;
-    this.handleRegistration = props.handleRegistration;
   }
 
   setFormProperties = event => {
@@ -28,19 +26,19 @@ class RegistrationForm extends Component {
   };
 
   handleSubmit(event) {
+    const { handleRegistration, handleRegistrationErrors } = this.props;
+
     event.preventDefault();
     const check = every(identity)(this.state);
     const { password, passwordConfirm } = this.state;
     if (password !== passwordConfirm) {
-      this.props.dispatch(
-        this.handleRegistrationErrors("Passwords must match")
-      );
+      this.props.dispatch(handleRegistrationErrors("Passwords must match"));
     } else if (!check) {
       this.props.dispatch(
-        this.handleRegistrationErrors("You must fill out all fields")
+        handleRegistrationErrors("You must fill out all fields")
       );
     } else {
-      this.handleRegistration(this.state);
+      handleRegistration(this.state);
     }
   }
 
