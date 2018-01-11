@@ -1,4 +1,5 @@
 import * as types from "../types";
+import jwtDecode from "jwt-decode";
 
 export default function(
   state = { authenticated: false, error: null, user: undefined },
@@ -6,7 +7,6 @@ export default function(
 ) {
   switch (action.type) {
     case types.SIGNOUT:
-      console.log("got to signout case");
       localStorage.removeItem("token");
       return {
         ...state,
@@ -15,14 +15,13 @@ export default function(
         user: undefined
       };
     case types.AUTH_SUCCESS:
-      /**
-       * TODO: get the user from the token
-       */
+      const user = jwtDecode(action.payload);
+
       return {
         ...state,
         authenticated: true,
         error: null,
-        user: action.payload
+        user
       };
     case types.AUTH_ERROR:
       return {

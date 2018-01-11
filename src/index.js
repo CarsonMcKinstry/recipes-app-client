@@ -5,7 +5,7 @@ import App from "./components/App";
 // import registerServiceWorker from './registerServiceWorker';
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
-
+import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import store from "./store/";
 import { AUTH_SUCCESS } from "./store/types";
 
@@ -17,7 +17,9 @@ if (token) {
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
-      <App />
+      <MuiThemeProvider>
+        <App />
+      </MuiThemeProvider>
     </BrowserRouter>
   </Provider>,
   document.getElementById("root")

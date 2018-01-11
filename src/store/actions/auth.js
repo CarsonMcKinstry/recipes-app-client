@@ -5,6 +5,23 @@ const APIBase = axios.create({
   baseURL: "/"
 });
 
+export function signin(user, history) {
+  return function(dispatch) {
+    APIBase.post("login", user)
+      .then(res => {
+        dispatch({
+          type: AUTH_SUCCESS,
+          payload: res.data.token
+        });
+        localStorage.setItem("token", res.data.token);
+        history.push("/");
+      })
+      .catch(err => {
+        dispatch(authError(err.message));
+      });
+  };
+}
+
 export const signout = () => dispatch => {
   dispatch({ type: SIGNOUT });
 };
