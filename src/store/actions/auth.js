@@ -1,13 +1,10 @@
 import axios from "axios";
 import { AUTH_ERROR, AUTH_SUCCESS, SIGNOUT } from "../types";
-
-const APIBase = axios.create({
-  baseURL: "/"
-});
+import { handleSignin, handleRegister } from "../api";
 
 export function signin(user, history) {
   return function(dispatch) {
-    APIBase.post("login", user)
+    handleSignin(user)
       .then(res => {
         dispatch({
           type: AUTH_SUCCESS,
@@ -35,7 +32,7 @@ export const authError = error => {
 
 export function registerUser(user, history) {
   return function(dispatch) {
-    APIBase.post("register", user)
+    handleRegister
       .then(res => {
         dispatch({
           type: AUTH_SUCCESS,

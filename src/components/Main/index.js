@@ -6,6 +6,7 @@ import RegisterUser from "../RegisterUser/";
 import Home from "../Home/";
 import SignOut from "../Auth/Signout";
 import SignIn from "../Auth/Signin";
+import Recipe from "../Recipe/";
 
 class Main extends Component {
   render() {
@@ -15,6 +16,7 @@ class Main extends Component {
         <Route path="/register" component={RegisterUser} />
         <Route path="/signin" component={SignIn} />
         <Route path="/signout" component={SignOut} />
+        <Route path="/recipe/:id" component={Recipe} />
       </Switch>
     );
   }

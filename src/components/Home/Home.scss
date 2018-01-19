@@ -1,1 +1,95 @@
+@import "../../styles/variables";
 
+%flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.split-jumbotron {
+  height: 600px;
+  display: flex;
+  .main-image {
+    position: relative;
+    width: 60%;
+    height: 100%;
+    @extend %flex-center;
+    overflow: hidden;
+    img {
+      height: 100%;
+    }
+  }
+  .secondary-images {
+    width: 40%;
+    .top,
+    .bottom {
+      @extend %flex-center;
+      height: 50%;
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+      img {
+        max-height: 100%;
+      }
+    }
+  }
+
+  .overlay {
+    color: $white;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    background-color: rgba(0, 0, 0, 0.25);
+    padding: {
+      left: 24px;
+      right: 24px;
+    }
+    h2 {
+      margin: {
+        bottom: 0;
+      }
+    }
+    .author {
+      margin: {
+        bottom: 0;
+      }
+    }
+    .likes {
+      font-size: 0.75rem;
+    }
+  }
+}
+
+// .split-jumbotron {
+// 	height: 600px;
+// 	width: 100%;
+// 	display: flex;
+// 	.main-image {
+// 		@extend %flex-center;
+// 		height: 100%;
+// 		width: 60%;
+// 		background-color: blue;
+// 		overflow: hidden;
+// 		img {
+// 			height: 100%;
+// 		}
+// 	}
+
+// 	.secondary-images {
+// 		width: 40%;
+// 		display: flex;
+// 		flex-direction: column;
+// 		.top, .bottom {
+// 			@extend %flex-center;
+// 			height: 50%;
+// 			width: 100%;
+
+// 			overflow: hidden;
+// 			img {
+// 				height: 100%;
+// 			}
+// 		}
+// 	}
+// }

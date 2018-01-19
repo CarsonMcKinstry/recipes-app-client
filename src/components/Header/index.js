@@ -6,10 +6,8 @@ import Popover from "material-ui/Popover";
 import Menu from "material-ui/Menu";
 import MenuItem from "material-ui/MenuItem";
 import "./Header.scss";
-
-// const renderHeaderRight = authenticated => {
-
-// };
+import IconButton from "material-ui/IconButton";
+import { ActionAccountCircle } from "material-ui/svg-icons";
 
 class Header extends Component {
   constructor(props) {
@@ -55,26 +53,25 @@ class Header extends Component {
       return (
         <ul className="header-right">
           <li>
-            <a onClick={this.handleClick}>My Recipes</a>
+            <IconButton onClick={this.handleClick}>
+              <ActionAccountCircle />
+            </IconButton>
             <Popover
               open={this.state.openRecipesMenu}
               anchorEl={this.state.anchorEl}
-              anchorOrigin={{ horizontal: "left", vertical: "bottom" }}
-              targetOrigin={{ horizontal: "left", vertical: "top" }}
+              anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+              targetOrigin={{ horizontal: "right", vertical: "top" }}
               onRequestClose={this.handleRequestClose}
             >
               <Menu>
-                <Link to="/new">
-                  <MenuItem primaryText="New Recipe" />
+                <Link to="/signout">
+                  <MenuItem primaryText="Signout" />
+                </Link>
+                <Link to="/account">
+                  <MenuItem primaryText="My Account" />
                 </Link>
               </Menu>
             </Popover>
-          </li>
-          <li>
-            <Link to="/account">Account</Link>
-          </li>
-          <li>
-            <Link to="/signout">Signout</Link>
           </li>
         </ul>
       );
