@@ -1,14 +1,30 @@
 @import "styles/variables";
 @import "styles/scale";
 @import "styles/fonts/fonts";
+@import "styles/base";
 
 body,
 html {
   padding: 0;
   margin: 0;
+  background-color: $lightGray;
+  height: 100%;
+}
+
+#root {
+  height: 100%;
 }
 
 .container {
   max-width: $maxWidth;
-  margin: auto;
+  margin: 12px auto 0;
+  padding: 12px;
+  background-color: $white;
+  height: 100%;
+  z-index: 900;
+  @extend %card-1;
+}
+
+.main-header {
+  z-index: 1000;
 }

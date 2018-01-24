@@ -29,9 +29,15 @@
       overflow: hidden;
       position: relative;
       img {
-        max-height: 100%;
+        width: 100%;
       }
     }
+  }
+
+  a {
+    line-height: initial;
+    color: $white;
+    text-decoration: none;
   }
 
   .overlay {
@@ -61,35 +67,3 @@
     }
   }
 }
-
-// .split-jumbotron {
-// 	height: 600px;
-// 	width: 100%;
-// 	display: flex;
-// 	.main-image {
-// 		@extend %flex-center;
-// 		height: 100%;
-// 		width: 60%;
-// 		background-color: blue;
-// 		overflow: hidden;
-// 		img {
-// 			height: 100%;
-// 		}
-// 	}
-
-// 	.secondary-images {
-// 		width: 40%;
-// 		display: flex;
-// 		flex-direction: column;
-// 		.top, .bottom {
-// 			@extend %flex-center;
-// 			height: 50%;
-// 			width: 100%;
-
-// 			overflow: hidden;
-// 			img {
-// 				height: 100%;
-// 			}
-// 		}
-// 	}
-// }

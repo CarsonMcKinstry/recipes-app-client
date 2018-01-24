@@ -1,9 +1,12 @@
 @import "../../styles/variables";
+@import "../../styles/base";
 
-header {
+.main-header {
   height: 55px;
   width: 100%;
   z-index: 1000;
+  background-color: $white;
+  @extend %card-2;
   nav {
     max-width: $maxWidth;
     margin: 0 auto;

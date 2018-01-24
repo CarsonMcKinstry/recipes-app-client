@@ -80,7 +80,7 @@ class Header extends Component {
 
   render() {
     return (
-      <header>
+      <header className="main-header">
         <nav>
           <ul className="header-left">
             <li>

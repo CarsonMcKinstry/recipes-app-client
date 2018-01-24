@@ -25,6 +25,11 @@ export default function(state = defaultState, action) {
         ...state,
         error: action.payload
       };
+    case types.RESET_RECIPE:
+      return {
+        ...state,
+        current: undefined
+      };
     default:
       return state;
   }
