@@ -3,7 +3,7 @@ import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as actions from "../../store/actions/recipes";
-import { chunk } from "lodash/fp";
+import { chunk, map } from "lodash/fp";
 import { RESET_RECIPE } from "../../store/types";
 
 import "./Recipe.scss";
@@ -20,32 +20,35 @@ class Recipe extends Component {
   }
 
   renderInstructions(instructions) {
-    return instructions.map((instruction, id) => (
+    return map((instruction, id) => (
       <li key={"instruction-" + id}>{instruction}</li>
-    ));
+    ))(instructions);
   }
 
   renderIngredients(ingredients) {
-    return ingredients.map((ingredient, id) => {
+    let chunkId = 0;
+    const chunkLength = Math.floor(ingredients.length / 2 + 1);
+    const ingredientChunks = chunk(chunkLength)(ingredients);
+    return map((chunk, id) => {
+      return <ul key={chunkId++}>{map(createDisplay)(chunk)}</ul>;
+    })(ingredientChunks);
+
+    function createDisplay(ingredient) {
       const { amount, measurement, name } = ingredient;
       let display;
       if (amount && measurement) {
-        display = `${amount} ${measurement} of ${name}`;
-      } else if ((amount, name)) {
+        display = `${amount} ${measurement + " "}${name}`;
+      } else if (amount && name) {
         display = `${amount} ${name}`;
+      } else {
+        display = name;
       }
-
-      return <li>{display}</li>;
-    });
+      return <li key={name}>{display}</li>;
+    }
   }
 
   render() {
     const { recipe } = this.props;
-
-    if (recipe) {
-      const columnLength = Math.floor(recipe.ingredients.length / 2 + 1);
-      console.log(chunk(columnLength)(recipe.ingredients));
-    }
 
     return recipe ? (
       <div className="recipe-page">
@@ -66,6 +69,15 @@ class Recipe extends Component {
           </header>
           <section>
             <h2>Ingredients</h2>
+            <div className="ingredients">
+              {this.renderIngredients(recipe.ingredients)}
+            </div>
+          </section>
+          <section>
+            <h2>Instructions</h2>
+            <div>
+              <ol>{this.renderInstructions(recipe.instructions)}</ol>
+            </div>
           </section>
         </article>
         <aside className="recommended" />
